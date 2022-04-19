@@ -1,0 +1,64 @@
+{
+  "name": "crypto-id",
+  "version": "0.0.1",
+  "description": "Cryptography based ID",
+  "main": "./dist/crypto-id.umd.js",
+  "module": "./dist/crypto-id.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/crypto-id.es.js",
+      "require": "./dist/crypto-id.umd.js"
+    }
+  },
+  "types": "src/index.ts",
+  "scripts": {
+    "dev": "vitest",
+    "test": "vitest run",
+    "build": "tsc && vite build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crypto-id/crypto-id-js.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "Crypto",
+    "ID",
+    "DID",
+    "User",
+    "ID"
+  ],
+  "author": "Naeemo <naeemo@qq.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/crypto-id/crypto-id-js/issues"
+  },
+  "homepage": "https://github.com/crypto-id/crypto-id-js#readme",
+  "devDependencies": {
+    "@types/node": "16",
+    "@typescript-eslint/eslint-plugin": "^5.20.0",
+    "@typescript-eslint/parser": "^5.20.0",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.8",
+    "prettier": "^2.6.2",
+    "typescript": "^4.6.3",
+    "vite": "^2.9.5",
+    "vitest": "^0.9.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(ts|js|json|md|html)": [
+      "eslint --fix",
+      "prettier --write"
+    ]
+  }
+}
