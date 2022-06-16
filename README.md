@@ -1,2 +1,3 @@
-# crypto-id-js
-Crypto ID JavaScript/TypeScript source
+# Comoc ID
+
+Comoc ID of Comoc-IM.
