@@ -1,5 +1,6 @@
 import { exportKeyPair, parse, stringify } from 'src/serialize'
 import { sign, verify } from 'src/usage'
+import { toAddress } from 'src/address'
 
 export class CryptoID {
     public readonly privateKey: CryptoKey
@@ -17,6 +18,10 @@ export class CryptoID {
         this.publicKey = publicKey
         this.exportPrivateKey = exportPrivateKey
         this.exportPublicKey = exportPublicKey
+    }
+
+    public get address() {
+        return toAddress(this.publicKey)
     }
 
     public async sign(data: BufferSource): Promise<ArrayBuffer> {

@@ -1,6 +1,6 @@
 interface ExportIdObject {
-    publicKey: JsonWebKey
-    privateKey: JsonWebKey
+    p: JsonWebKey // public key
+    s: JsonWebKey // private key
 }
 
 export async function exportKeyPair(
@@ -22,8 +22,8 @@ export function stringify(
     exportPublicKey: JsonWebKey
 ): string {
     const obj: ExportIdObject = {
-        privateKey: exportPrivateKey,
-        publicKey: exportPublicKey,
+        s: exportPrivateKey,
+        p: exportPublicKey,
     }
     return JSON.stringify(obj)
 }
@@ -32,6 +32,6 @@ export async function parse(source: string): Promise<{
     exportPrivateKey: JsonWebKey
     exportPublicKey: JsonWebKey
 } | null> {
-    const { privateKey, publicKey } = JSON.parse(source) as ExportIdObject
-    return { exportPrivateKey: privateKey, exportPublicKey: publicKey }
+    const { s, p } = JSON.parse(source) as ExportIdObject
+    return { exportPrivateKey: s, exportPublicKey: p }
 }
