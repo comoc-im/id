@@ -1,12 +1,11 @@
-import { ICryptoID } from 'src/interface'
 import { exportKeyPair, parse, stringify } from 'src/serialize'
 import { sign, verify } from 'src/usage'
 
-export class CryptoID implements ICryptoID {
+export class CryptoID {
     public readonly privateKey: CryptoKey
     public readonly publicKey: CryptoKey
-    public readonly exportPrivateKey: JsonWebKey
-    public readonly exportPublicKey: JsonWebKey
+    private readonly exportPrivateKey: JsonWebKey
+    private readonly exportPublicKey: JsonWebKey
 
     constructor(
         privateKey: CryptoKey,
@@ -32,11 +31,11 @@ export class CryptoID implements ICryptoID {
     }
 
     public toJSON(): string {
-        return stringify(this)
+        return stringify(this.exportPrivateKey, this.exportPublicKey)
     }
 
     public toString(): string {
-        return stringify(this)
+        return stringify(this.exportPrivateKey, this.exportPublicKey)
     }
 }
 
@@ -60,17 +59,38 @@ export async function createId(): Promise<CryptoID> {
 }
 
 export async function importId(source: string): Promise<CryptoID | null> {
-    const parseResult = await parse(source)
-    if (!parseResult) {
+    try {
+        const parseResult = await parse(source)
+        if (!parseResult) {
+            return null
+        }
+        const { exportPublicKey, exportPrivateKey } = parseResult
+
+        return new CryptoID(
+            await window.crypto.subtle.importKey(
+                'jwk',
+                exportPrivateKey,
+                {
+                    name: 'ECDSA',
+                    namedCurve: 'P-384',
+                },
+                true,
+                ['sign']
+            ),
+            await window.crypto.subtle.importKey(
+                'jwk',
+                exportPublicKey,
+                {
+                    name: 'ECDSA',
+                    namedCurve: 'P-384',
+                },
+                true,
+                ['verify']
+            ),
+            exportPrivateKey,
+            exportPublicKey
+        )
+    } catch (err) {
         return null
     }
-
-    const { privateKey, publicKey, exportPublicKey, exportPrivateKey } =
-        parseResult
-    return new CryptoID(
-        privateKey,
-        publicKey,
-        exportPrivateKey,
-        exportPublicKey
-    )
 }

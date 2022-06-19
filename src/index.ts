@@ -1,1 +1,1 @@
-export { CryptoID } from './id'
+export { CryptoID, createId, importId } from './id'
