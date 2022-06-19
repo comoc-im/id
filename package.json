@@ -1,13 +1,13 @@
 {
-  "name": "crypto-id",
+  "name": "@comoc-im/id",
   "version": "0.0.1",
-  "description": "Cryptography based ID",
-  "main": "./dist/crypto-id.umd.js",
-  "module": "./dist/crypto-id.es.js",
+  "description": "Comoc-IM ID",
+  "main": "./dist/id.umd.js",
+  "module": "./dist/id.es.js",
   "exports": {
     ".": {
-      "import": "./dist/crypto-id.es.js",
-      "require": "./dist/crypto-id.umd.js"
+      "import": "./dist/id.es.js",
+      "require": "./dist/id.umd.js"
     }
   },
   "types": "src/index.ts",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/crypto-id/crypto-id-js.git"
+    "url": "git+https://github.com:comoc-im/id.git"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -33,22 +33,22 @@
   "author": "Naeemo <naeemo@qq.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/crypto-id/crypto-id-js/issues"
+    "url": "https://github.com/comoc-im/id/issues"
   },
-  "homepage": "https://github.com/crypto-id/crypto-id-js#readme",
+  "homepage": "https://github.com/comoc-im/id#readme",
   "devDependencies": {
-    "@types/node": "16",
-    "@typescript-eslint/eslint-plugin": "^5.20.0",
-    "@typescript-eslint/parser": "^5.20.0",
-    "eslint": "^8.13.0",
+    "@types/node": "^16.11.41",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "husky": "^7.0.4",
-    "lint-staged": "^12.3.8",
-    "prettier": "^2.6.2",
-    "typescript": "^4.6.3",
-    "vite": "^2.9.5",
-    "vitest": "^0.9.3"
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.2",
+    "prettier": "^2.7.1",
+    "typescript": "^4.7.4",
+    "vite": "^2.9.12",
+    "vitest": "^0.15.1"
   },
   "husky": {
     "hooks": {

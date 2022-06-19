@@ -1,5 +1,1 @@
-export class CryptoID {
-    constructor() {
-        console.info('Crypto ID')
-    }
-}
+export { CryptoID } from './id'

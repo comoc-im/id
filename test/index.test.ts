@@ -1,9 +1,11 @@
 import { describe, expect, test } from 'vitest'
 import { CryptoID } from 'src'
+import { createId } from 'src/id'
 
 describe('CryptoID', () => {
-    test('base', () => {
+    test('base', async () => {
         expect(CryptoID).toBeDefined()
-        expect(new CryptoID()).toBeInstanceOf(CryptoID)
+        const id = await createId()
+        expect(id).toBeInstanceOf(CryptoID)
     })
 })

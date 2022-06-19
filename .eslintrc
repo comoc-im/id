@@ -1,6 +1,7 @@
 {
   "root": true,
   "env": {
+    "browser": true,
     "node": true
   },
   "extends": [
@@ -8,9 +9,10 @@
     "eslint:recommended",
     "prettier"
   ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2020,
-    "parser": "@typescript-eslint/parser"
+    "lib": ["dom", "esnext"]
   },
   "plugins": [
     "@typescript-eslint",
