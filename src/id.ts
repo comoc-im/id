@@ -1,6 +1,6 @@
-import { exportKeyPair, parse, stringify } from 'src/serialize'
-import { sign, verify } from 'src/usage'
-import { toAddress } from 'src/address'
+import { exportKeyPair, parse, stringify } from './serialize'
+import { sign, verify } from './usage'
+import { toAddress } from './address'
 
 export class CryptoID {
     public readonly privateKey: CryptoKey
