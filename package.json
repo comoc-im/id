@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Comoc-IM ID",
   "main": "./dist/id.umd.js",
+  "private": false,
   "module": "./dist/id.es.js",
   "exports": {
     ".": {
