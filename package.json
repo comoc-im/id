@@ -25,11 +25,10 @@
     "registry": "https://registry.npmjs.org/"
   },
   "keywords": [
-    "Crypto",
+    "Comoc-IM",
     "ID",
     "DID",
-    "User",
-    "ID"
+    "IM"
   ],
   "author": "Naeemo <naeemo@qq.com>",
   "license": "MIT",
