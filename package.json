@@ -1,6 +1,6 @@
 {
   "name": "@comoc-im/id",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Comoc-IM ID",
   "main": "./dist/id.umd.js",
   "private": false,
