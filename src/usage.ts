@@ -1,8 +1,10 @@
+import { bytesToHex, hexToBytes } from './address'
+
 export async function sign(
     privateKey: CryptoKey,
     data: BufferSource
-): Promise<ArrayBuffer> {
-    return window.crypto.subtle.sign(
+): Promise<string> {
+    const buffer = await window.crypto.subtle.sign(
         {
             name: 'ECDSA',
             hash: { name: 'SHA-384' },
@@ -10,20 +12,22 @@ export async function sign(
         privateKey,
         data
     )
+    return bytesToHex(buffer)
 }
 
 export async function verify(
     publicKey: CryptoKey,
     data: BufferSource,
-    signature: ArrayBuffer
+    signature: string
 ): Promise<boolean> {
+    const signatureBuf = await hexToBytes(signature)
     return window.crypto.subtle.verify(
         {
             name: 'ECDSA',
             hash: { name: 'SHA-384' },
         },
         publicKey,
-        signature,
+        signatureBuf,
         data
     )
 }

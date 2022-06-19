@@ -24,13 +24,13 @@ export class CryptoID {
         return toAddress(this.publicKey)
     }
 
-    public async sign(data: BufferSource): Promise<ArrayBuffer> {
+    public async sign(data: BufferSource): Promise<string> {
         return sign(this.privateKey, data)
     }
 
     public async verify(
         data: BufferSource,
-        signature: ArrayBuffer
+        signature: string
     ): Promise<boolean> {
         return verify(this.publicKey, data, signature)
     }
